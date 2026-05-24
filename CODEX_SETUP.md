@@ -38,6 +38,30 @@ pbi connect
 After that, start a new Codex session and ask for Power BI work in natural
 language.
 
+### Windows SSPI / Codex Sandbox Note
+
+On Windows, `pbi connect` may auto-detect the correct Power BI Desktop
+localhost port but still fail inside a sandboxed Codex command with an SSPI
+authentication error such as:
+
+```text
+No hay credenciales disponibles en el paquete de seguridad
+```
+
+or:
+
+```text
+No credentials are available in the security package
+```
+
+If the same command works outside the sandbox, the PBIX file, detected port, and
+Power BI Desktop instance are probably fine. The failure is caused by the
+sandboxed execution context not having access to the Windows integrated
+authentication credentials required by the local Analysis Services endpoint.
+
+Recommended action: rerun `pbi connect` outside the sandbox or approve
+escalated execution, then continue the Codex workflow.
+
 ## macOS
 
 macOS can use the Codex skills and the PBIR/report-file commands. Semantic

@@ -106,6 +106,13 @@ pbi connect -d localhost:54321
 pbi disconnect
 ```
 
+### Codex Sandbox / SSPI Note
+
+If `pbi connect` detects a localhost Power BI Desktop port but fails with SSPI
+or "No credentials are available in the security package", retry the same
+command outside the sandbox or with escalated permissions before debugging the
+PBIX file, port detection, or Power BI Desktop instance.
+
 ## Workflow: Profile a Slow Query
 
 ```bash
