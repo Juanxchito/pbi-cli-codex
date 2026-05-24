@@ -1,0 +1,71 @@
+# Backup files
+*.bak
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg-info/
+*.egg
+dist/
+build/
+.eggs/
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+.mypy_cache/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# pbi-cli specific
+~/.pbi-cli/
+
+# Extracted wheel/sdist build directories
+pbi_cli_tool-*/
+
+# Demo and scratch Power BI project files
+demo.Report/
+demo.SemanticModel/
+demo.pbip
+pbir_desktop_test/
+"pbib examples/"
+
+# Marketing assets (local only, not for GitHub)
+marketing/
+
+# Local-only documents (private notes, call prep, etc.)
+docs/
+
+# Assets not referenced in README
+assets/*.png
+assets/Claude_AI_symbol.svg
+assets/New_Power_BI_Logo.svg
+assets/commands.svg
+assets/cta-start.svg
+assets/dax-skill.svg
+assets/deploy-secure.svg
+assets/docs-diagnostics.svg
+assets/dual-layer.svg
+assets/feature-grid.svg
+assets/header.svg
+assets/how-it-works.svg
+assets/modeling-skill.svg
+assets/release-vibe-bi.svg
+assets/token-cost.svg
+assets/workflow.svg
