@@ -10,6 +10,20 @@ function Test-Command($Name) {
     return [bool](Get-Command $Name -ErrorAction SilentlyContinue)
 }
 
+function Resolve-PbiCli {
+    $command = Get-Command "pbi-cli" -ErrorAction SilentlyContinue
+    if ($command) {
+        return $command.Source
+    }
+
+    $pipxLauncher = Join-Path $HOME ".local\bin\pbi-cli.exe"
+    if (Test-Path $pipxLauncher) {
+        return $pipxLauncher
+    }
+
+    throw "pbi-cli was installed, but its executable was not found on PATH or at $pipxLauncher."
+}
+
 if (-not (Test-Command "py")) {
     throw "Python launcher 'py' was not found. Install Python 3.10+ from python.org first."
 }
@@ -28,7 +42,8 @@ if (-not (Test-Command "pipx")) {
 }
 
 pipx install --force "$RootDir"
-pbi-cli skills install --agent codex --force --yes
+$pbiCli = Resolve-PbiCli
+& $pbiCli skills install --agent codex --force --yes
 
 Write-Host ""
 Write-Host "pbi-cli is installed for Codex."
