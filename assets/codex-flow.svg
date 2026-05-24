@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="300" viewBox="0 0 960 300" role="img" aria-labelledby="title desc">
+  <title id="title">Codex installation flow</title>
+  <desc id="desc">A simple four step installation flow for pbi-cli-codex.</desc>
+  <rect width="960" height="300" fill="#ffffff"/>
+  <text x="48" y="54" fill="#111827" font-family="Arial, sans-serif" font-size="28" font-weight="700">Install once, then work in Codex</text>
+  <g font-family="Arial, sans-serif">
+    <g>
+      <rect x="48" y="104" width="180" height="104" rx="12" fill="#f7f9fc" stroke="#d8dee9"/>
+      <text x="76" y="142" fill="#111827" font-size="18" font-weight="700">1. Clone</text>
+      <text x="76" y="172" fill="#4b5563" font-size="14">Get this fork</text>
+    </g>
+    <g>
+      <rect x="282" y="104" width="180" height="104" rx="12" fill="#f7f9fc" stroke="#d8dee9"/>
+      <text x="310" y="142" fill="#111827" font-size="18" font-weight="700">2. Install</text>
+      <text x="310" y="172" fill="#4b5563" font-size="14">Run platform script</text>
+    </g>
+    <g>
+      <rect x="516" y="104" width="180" height="104" rx="12" fill="#f7f9fc" stroke="#d8dee9"/>
+      <text x="544" y="142" fill="#111827" font-size="18" font-weight="700">3. Connect</text>
+      <text x="544" y="172" fill="#4b5563" font-size="14">Use pbi connect</text>
+    </g>
+    <g>
+      <rect x="750" y="104" width="162" height="104" rx="12" fill="#f7f9fc" stroke="#d8dee9"/>
+      <text x="778" y="142" fill="#111827" font-size="18" font-weight="700">4. Ask</text>
+      <text x="778" y="172" fill="#4b5563" font-size="14">Start Codex</text>
+    </g>
+  </g>
+  <g stroke="#9ca3af" stroke-width="2.5" fill="none" stroke-linecap="round">
+    <path d="M238 156h32"/>
+    <path d="M472 156h32"/>
+    <path d="M706 156h32"/>
+  </g>
+  <g fill="#9ca3af">
+    <path d="M270 156l-10-6v12z"/>
+    <path d="M504 156l-10-6v12z"/>
+    <path d="M738 156l-10-6v12z"/>
+  </g>
+  <text x="48" y="248" fill="#6b7280" font-family="Arial, sans-serif" font-size="14">Windows is recommended for semantic model work. macOS is useful for PBIR/report-file workflows.</text>
+</svg>

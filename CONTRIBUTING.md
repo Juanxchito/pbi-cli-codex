@@ -1,12 +1,12 @@
-# Contributing to pbi-cli
+# Contributing to pbi-cli-codex
 
 Thanks for your interest in contributing! Here's how to get started.
 
 ## Development Setup
 
 ```bash
-git clone https://github.com/MinaSaad1/pbi-cli.git
-cd pbi-cli
+git clone https://github.com/Juanxchito/pbi-cli-codex.git
+cd pbi-cli-codex
 python -m venv .venv
 source .venv/bin/activate  # Windows: .venv\Scripts\activate
 pip install -e ".[dev]"
@@ -33,7 +33,7 @@ mypy src/                       # type checking
 
 ## Pull Request Process
 
-1. Fork the repo and create a feature branch from `master`
+1. Fork the repo and create a feature branch from `main`
 2. Write tests for new functionality (target 80%+ coverage)
 3. Ensure all checks pass (`ruff`, `mypy`, `pytest`)
 4. Keep PRs focused on a single change
@@ -44,8 +44,8 @@ mypy src/                       # type checking
 ```
 src/pbi_cli/
   commands/       # Click command groups (one file per domain)
-  core/           # MCP client, config, output formatting
-  skills/         # Claude Code SKILL.md files (bundled)
+  core/           # Power BI backends, config, output formatting
+  skills/         # Agent SKILL.md files for Codex and Claude Code
   utils/          # REPL, helpers
 tests/            # Mirrors src/ structure
 ```
@@ -65,7 +65,7 @@ tests/            # Mirrors src/ structure
 
 ## Reporting Issues
 
-Open an issue on [GitHub](https://github.com/MinaSaad1/pbi-cli/issues) with:
+Open an issue on [GitHub](https://github.com/Juanxchito/pbi-cli-codex/issues) with:
 
 - What you expected to happen
 - What actually happened

@@ -1,6 +1,10 @@
 # pbi-cli for Codex
 
-This fork adds first-class Codex setup to pbi-cli.
+This repository is a Codex-focused adaptation of Mina Saad's original
+[`MinaSaad1/pbi-cli`](https://github.com/MinaSaad1/pbi-cli). The upstream
+project provides the core Power BI CLI, Power BI Desktop interop, PBIR report
+commands, and original Power BI agent skills. This fork adds first-class Codex
+setup on top of that work.
 
 It installs the bundled Power BI skills into Codex's agent skill directory:
 

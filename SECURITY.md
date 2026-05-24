@@ -66,55 +66,62 @@ and this document reflects the current 3.x behavior.
 
 ## Global Configuration Modifications
 
-pbi-cli integrates with Claude Code by writing to the user's global Claude
-configuration directory. Users should be aware of exactly which files are
+pbi-cli integrates with Codex and Claude Code by writing to each agent's
+global configuration directory. Users should be aware of exactly which files are
 modified and when. This section is authoritative; if behavior diverges from
 the description below, please file a security advisory.
 
 ### Files written
 
-| Path                           | Written by              | Contents                                                                                                                                                                               |
-|--------------------------------|-------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `~/.claude/CLAUDE.md`          | `pbi-cli skills install` | Appends a block wrapped in `<!-- pbi-cli:start -->` / `<!-- pbi-cli:end -->` markers that lists the 12 bundled skills and their trigger conditions. Source: `src/pbi_cli/core/claude_integration.py`. |
-| `~/.claude/skills/power-bi-*/` | `pbi-cli skills install` | Copies the 12 bundled `SKILL.md` files from `src/pbi_cli/skills/` so Claude Code discovers them. Source: `src/pbi_cli/commands/skills_cmd.py`.                                         |
+| Path                            | Written by                            | Contents                                                                                                                                                                               |
+|---------------------------------|---------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `~/.codex/AGENTS.md`            | `pbi-cli skills install --agent codex` | Appends a block wrapped in `<!-- pbi-cli-codex:start -->` / `<!-- pbi-cli-codex:end -->` markers that lists the bundled skills and their trigger conditions. Source: `src/pbi_cli/core/codex_integration.py`. |
+| `~/.agents/skills/power-bi-*/`  | `pbi-cli skills install --agent codex` | Copies bundled skill folders from `src/pbi_cli/skills/` so Codex discovers them. Source: `src/pbi_cli/commands/skills_cmd.py`.                                                          |
+| `~/.claude/CLAUDE.md`           | `pbi-cli skills install`              | Appends a block wrapped in `<!-- pbi-cli:start -->` / `<!-- pbi-cli:end -->` markers for Claude Code compatibility. Source: `src/pbi_cli/core/claude_integration.py`.                  |
+| `~/.claude/skills/power-bi-*/`  | `pbi-cli skills install`              | Copies bundled skill folders so Claude Code discovers them. Source: `src/pbi_cli/commands/skills_cmd.py`.                                                                              |
 
-No other paths under `~/.claude/` are read or modified. pbi-cli does not
-access user conversation history, project memory files, unrelated skills,
-or any other Claude Code state.
+No other paths under `~/.codex/`, `~/.agents/`, or `~/.claude/` are read or
+modified. pbi-cli does not access user conversation history, project memory
+files, unrelated skills, or any other agent state.
 
 ### When it happens
 
-- **`pbi-cli skills install`** — the explicit install command (3.10.3+).
-  Before writing anything, the command displays the exact paths it will
-  modify and requires the user to confirm. Passing `--yes` / `-y` skips
-  the prompt for non-interactive use.
-- **`pbi-cli skills uninstall`** — removes the skill files and, when
-  removing all skills, cleans up the `CLAUDE.md` block between its
+- **`pbi-cli skills install --agent codex`** — installs Codex skills and the
+  Codex global routing block.
+- **`pbi-cli skills install`** — installs Claude Code skills and the Claude Code
+  global routing block.
+  For both commands, before writing anything, the command displays the exact
+  paths it will modify and requires the user to confirm. Passing `--yes` / `-y`
+  skips the prompt for non-interactive use.
+- **`pbi-cli skills uninstall --agent codex`** — removes the Codex skill files
+  and, when removing all skills, cleans up the `AGENTS.md` block between its
   marker comments.
-- **`pbi connect`** — connects to Power BI Desktop only. It does **not**
-  write to `~/.claude/`. On a successful connection it checks whether
-  skills are installed and, if not, prints a one-line tip:
-  `Run 'pbi-cli skills install' to register pbi-cli skills with Claude Code.`
+- **`pbi-cli skills uninstall`** — removes the Claude Code skill files and, when
+  removing all skills, cleans up the `CLAUDE.md` block between its marker
+  comments.
+- **`pbi connect`** — connects to Power BI Desktop only. It does **not** write to
+  agent configuration directories. On a successful connection it checks whether
+  skills are installed and, if not, prints a one-line tip.
 
 ### Opt-out
 
-Claude Code integration is fully opt-in as of 3.10.3. Simply do not run
-`pbi-cli skills install` and `~/.claude/` is never touched.
+Agent integration is fully opt-in. Simply do not run `pbi-cli skills install`
+and no agent configuration directory is touched.
 
 To remove a previously installed integration, run:
 
 ```
 pbi-cli skills uninstall
+pbi-cli skills uninstall --agent codex
 ```
 
 ### Why this matters
 
-`~/.claude/CLAUDE.md` is Claude Code's global instruction file and is
-loaded into every Claude Code session across every project on the
-machine. Modifying it affects Claude's behavior everywhere, not just for
-Power BI work. The pbi-cli block is bounded by comment markers so it can
-be removed cleanly, but users on multi-tenant or sensitive machines
-should be aware of this before running `pbi-cli skills install`.
+`~/.codex/AGENTS.md` and `~/.claude/CLAUDE.md` are global instruction files.
+Modifying them affects future agent behavior beyond a single Power BI project.
+The pbi-cli blocks are bounded by comment markers so they can be removed
+cleanly, but users on multi-tenant or sensitive machines should be aware of this
+before installing the integration.
 
 ## Bundled Binaries
 

@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "pbi-cli-tool"
 version = "3.11.2"
-description = "CLI for Power BI semantic models and PBIR reports - direct .NET connection for token-efficient AI agent usage"
+description = "Codex-ready CLI for Power BI semantic models and PBIR report workflows"
 readme = "README.pypi.md"
 license = "MIT AND LicenseRef-Microsoft-AS-Client-Libraries"
 license-files = ["LICENSE", "THIRD_PARTY_LICENSES.md", "NOTICE"]
@@ -13,7 +13,7 @@ requires-python = ">=3.10"
 authors = [
     {name = "pbi-cli contributors"},
 ]
-keywords = ["power-bi", "cli", "semantic-model", "dax", "claude-code", "tom", "pbir", "report"]
+keywords = ["power-bi", "cli", "semantic-model", "dax", "codex", "tom", "pbir", "report"]
 classifiers = [
     "Development Status :: 5 - Production/Stable",
     "Environment :: Console",
@@ -40,9 +40,10 @@ pbi = "pbi_cli.main:cli"
 pbi-cli = "pbi_cli.main_pbi_cli:cli"
 
 [project.urls]
-Homepage = "https://github.com/MinaSaad1/pbi-cli"
-Repository = "https://github.com/MinaSaad1/pbi-cli"
-Issues = "https://github.com/MinaSaad1/pbi-cli/issues"
+Homepage = "https://github.com/Juanxchito/pbi-cli-codex"
+Repository = "https://github.com/Juanxchito/pbi-cli-codex"
+Issues = "https://github.com/Juanxchito/pbi-cli-codex/issues"
+Upstream = "https://github.com/MinaSaad1/pbi-cli"
 
 [project.optional-dependencies]
 dev = [

@@ -9,13 +9,13 @@ on:
   schedule:
     - cron: "17 5 * * *"  # nightly
   push:
-    branches: [master]
+    branches: [main]
     paths:
       - "src/pbi_cli/skills/power-bi-custom-visuals/**"
       - "src/pbi_cli/core/custom_visual_backend.py"
       - ".github/workflows/custom-visual-smoke.yml"
   pull_request:
-    branches: [master]
+    branches: [main]
     paths:
       - "src/pbi_cli/skills/power-bi-custom-visuals/**"
       - "src/pbi_cli/core/custom_visual_backend.py"
